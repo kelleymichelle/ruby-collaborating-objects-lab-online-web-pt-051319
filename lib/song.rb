@@ -8,17 +8,18 @@ class Song
 
   def artist=(artist)
     @artist = artist
+    
+    
   end
   
   def self.new_by_filename(filename)
     x = filename.split(" - ")
-    c = self.new
-    c.name = x[1]
-    c.artist = x[0]
-
-
+    songname = x[1]
+    art = x[0]
+    c = self.new(songname)
+    c.artist = Artist.new(art)
+    c.artist.add_song(songname)
+    return c
   end  
-  
-  
-
+   
 end  
